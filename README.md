@@ -44,3 +44,5 @@ Brindar una solución moderna, rápida y segura para el pago de estacionamientos
 ## Estado del proyecto
 
 Proyecto finalizado y listo para uso operativo.
+[INTRUCTIVOPAGOWEBLINK.pptx](https://github.com/user-attachments/files/28102718/INTRUCTIVOPAGOWEBLINK.pptx)
+
