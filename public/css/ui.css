@@ -1,0 +1,183 @@
+/* ==========================================================
+   CENTRAL PARKING · Drawer / Menú Hamburguesa (TRANSPARENTE)
+   - Fondo del drawer semitransparente + blur (glass)
+   - Compatible con clases: .open y .is-open
+   ========================================================== */
+
+:root{
+  /* GLASS (transparente) */
+  --drawer-bg: rgba(7, 20, 40, .62);     /* azul noche transparente */
+  --drawer-card: rgba(10, 28, 51, .55);
+
+  /* Textos */
+  --drawer-text:#f1f5f9;
+  --drawer-muted:#d1d9e6;
+
+  /* Líneas */
+  --drawer-line:rgba(255,255,255,.16);
+
+  /* Marca: azul + dorado */
+  --drawer-brand:#0b3a86;
+  --drawer-brand2:#052a66;
+  --drawer-accent:#f0b429;
+  --drawer-accent2:#ffd76a;
+
+  /* Overlay */
+  --drawer-overlay:rgba(0,0,0,.45);
+}
+
+/* =========================
+   Botón hamburguesa
+   ========================= */
+.hamb-btn{
+  appearance:none;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  transition: background .18s ease;
+}
+.hamb-btn:hover{ background:rgba(11,58,134,.08); }
+
+.hamb-lines{ width:22px; height:14px; position:relative; }
+.hamb-lines span{
+  position:absolute; left:0; right:0;
+  height:2px; border-radius:2px;
+  background:var(--drawer-brand);
+  transition: transform .2s ease, opacity .2s ease;
+}
+.hamb-lines span:nth-child(1){ top:0; }
+.hamb-lines span:nth-child(2){ top:6px; opacity:.95; }
+.hamb-lines span:nth-child(3){ top:12px; opacity:.85; }
+
+/* =========================
+   Overlay y Drawer
+   ========================= */
+.drawer-overlay{
+  position:fixed; inset:0;
+  background:var(--drawer-overlay);
+  opacity:0; pointer-events:none;
+  transition:.2s ease;
+  z-index:9998;
+}
+
+.drawer{
+  position:fixed; top:0; left:0; height:100%;
+  width:320px; max-width:88vw;
+
+  /* ✅ TRANSPARENTE (glass) */
+  background: var(--drawer-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  color:var(--drawer-text);
+  transform:translateX(-102%);
+  transition:.24s ease;
+  z-index:9999;
+
+  /* borde + glow elegante */
+  border-right: 1px solid rgba(255,255,255,.14);
+  box-shadow: 16px 0 40px rgba(0,0,0,.35);
+
+  display:flex; flex-direction:column;
+}
+
+/* ✅ soporta ambas clases (open e is-open) */
+.drawer.open,
+.drawer.is-open{ transform:translateX(0); }
+
+.drawer-overlay.open,
+.drawer-overlay.is-open{ opacity:1; pointer-events:auto; }
+
+/* =========================
+   Header
+   ========================= */
+.drawer-header{
+  padding:18px 18px 14px 18px;
+  border-bottom:1px solid var(--drawer-line);
+
+  /* glass un poco más marcado arriba */
+  background: linear-gradient(90deg, rgba(11,58,134,.22), rgba(240,180,41,.10));
+}
+
+.drawer-brand{ display:flex; gap:10px; align-items:center; }
+
+.drawer-logo{
+  width:38px; height:38px; border-radius:12px;
+  background:linear-gradient(135deg,var(--drawer-brand),var(--drawer-accent));
+  box-shadow: 0 10px 22px rgba(0,0,0,.25);
+}
+
+.drawer-title{ font-weight:900; letter-spacing:.3px; line-height:1.1; }
+.drawer-sub{ font-size:12px; color:var(--drawer-muted); margin-top:3px; }
+
+/* =========================
+   Navegación
+   ========================= */
+.drawer-nav{
+  padding:10px;
+  display:flex; flex-direction:column; gap:8px;
+}
+
+.drawer-link{
+  display:flex; gap:10px; align-items:center;
+  padding:12px 12px;
+  border-radius:14px;
+  text-decoration:none;
+  color:var(--drawer-text);
+
+  /* glass card */
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(240,180,41,.10);
+
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.drawer-link:hover{
+  background: rgba(240,180,41,.10);
+  border-color: rgba(240,180,41,.24);
+  transform: translateY(-1px);
+}
+
+.drawer-ico{
+  width:36px; height:36px; border-radius:12px;
+
+  background: linear-gradient(135deg, rgba(11,58,134,.50), rgba(240,180,41,.16));
+  border: 1px solid rgba(240,180,41,.18);
+
+  display:grid; place-items:center;
+  font-weight:900;
+  color:var(--drawer-text);
+}
+
+.drawer-link small{
+  display:block;
+  color:var(--drawer-muted);
+  margin-top:2px;
+  font-size:12px;
+  line-height:1.2;
+}
+
+/* =========================
+   Footer
+   ========================= */
+.drawer-footer{
+  margin-top:auto;
+  padding:14px 18px;
+  border-top:1px solid var(--drawer-line);
+  font-size:12px;
+  color:var(--drawer-muted);
+
+  background: rgba(0,0,0,.08);
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 520px){
+  .drawer{ width:86vw; }
+}
